@@ -1,0 +1,43 @@
+---
+title: "Day 1: Line Graphs"
+author: "Hardik Monga"
+---
+
+## Introduction
+
+thiojd sjnhsk gh fgkjhnsdkg sjlkgjsk r
+
+## My First Piece
+
+bjughvghvjhvjvh vugvgvghvu vvuygy
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(ggformula)
+library(babynames)
+
+```
+
+```{r}
+babynames
+```
+
+```{r}
+babynames %>% filter(name == "Hardik")
+```
+
+```{r}
+babynames %>% filter(name == "Aditi") %>% 
+  gf_line(n ~ year)
+```
+
+```{r}
+babynames %>% filter(name=="Adithi") %>% 
+  gf_line(n ~ year)
+```
+
+```{r}
+babynames %>% filter(name=="Adhithi") %>% 
+  gf_line(n ~ year)
+```
