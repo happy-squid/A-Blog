@@ -1,3 +1,130 @@
 ---
 title: "Day3: Counts"
 ---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(ggformula)
+library(skimr)
+library(knitr)
+library(kableExtra)
+```
+
+```{r}
+taxi <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/modeldata/taxi.csv")
+taxi
+```
+
+### Skim
+
+```{r}
+taxi %>% skimr::skim()
+```
+
+### Glimpse
+
+```{r}
+glimpse(taxi)
+```
+
+### Inspect
+
+```{r}
+inspect(taxi)
+```
+
+### Modified Taxi Glimpse
+
+```{r}
+## Convert `dow`, `local`, and `month` into ordered factors
+taxi_modified <- taxi %>%
+  mutate(
+    dow = factor(dow,
+      levels = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+      labels = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+      ordered = TRUE
+    ),
+    ##
+    local = factor(local,
+      levels = c("no", "yes"),
+      labels = c("no", "yes"),
+      ordered = TRUE
+    ),
+    ##
+    month = factor(month,
+      levels = c("Jan", "Feb", "Mar", "Apr"),
+      labels = c("Jan", "Feb", "Mar", "Apr"),
+      ordered = TRUE
+    )
+  )
+taxi_modified %>% glimpse()
+```
+
+```{r}
+gf_bar(~ tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot A Stack: Counts of Tips")
+
+gf_bar(~ tip, color = ~local, data = taxi_modified) %>%
+  gf_labs(title = "Plot A Stack: Counts of Tips and Local")
+
+gf_bar(~ tip, fill = ~local, position = "stack", data = taxi_modified) %>%
+  gf_labs(title = "Plot A Stack: Counts of Tips and Local")
+
+gf_bar(~ tip, fill = ~local, position = "dodge", data = taxi_modified) %>%
+  gf_labs(title = "Plot A Dodge: Counts of Tips and Local")
+
+gf_props(~ tip, fill = ~local, position = "fill", data = taxi_modified) %>%
+  gf_labs(title = "Plot A Fill: Ratio of Tips and Local")
+
+gf_props(~ company, fill = ~tip, position = "fill", data = taxi_modified) %>%
+  gf_labs(title = "Plot A Fill: Ratio of Tips for Different Companies")
+
+#| label: Alternate Syntax
+ggplot(taxi_modified)  + 
+  geom_bar(aes(x = tip)) + 
+  labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+gf_bar(~ hour, fill = ~ tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot B: Counts of Tips by Hour")
+
+gf_props(~ hour, fill = ~ tip, position = "fill", data = taxi_modified) %>%
+  gf_labs(title = "Plot B: Counts of Tips by Hour")
+##
+gf_bar(~ dow, fill = ~ tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot C: Counts of Tips by Day of Week")
+##
+gf_bar(~ month, fill = ~ tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot D: Counts of Tips by Month")
+
+##
+gf_bar(~ month | dow, fill = ~ tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot E: Counts of Tips by Day of Week and Month")
+##
+## This may be too busy a graph...
+gf_bar(~ dow | hour, fill = ~ tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot F: Counts of Tips by Hour and Day of Week",
+          subtitle = "Is this plot arrangement easy to grasp?")
+
+gf_props(~ dow | hour, fill = ~ tip, position = "fill", data = taxi_modified) %>%
+  gf_labs(title = "Plot F: Counts of Tips by Hour and Day of Week",
+          subtitle = "Is this plot arrangement easy to grasp?")
+## This is better!
+gf_bar(~ hour | dow, fill = ~ tip, data = taxi) %>%
+  gf_labs(title = "Plot G: Counts of Tips by Hour and Day of Week",
+          subtitle = "Swapped the Facets")  
+gf_props(~ hour | dow, fill = ~ tip, position = 'fill', data = taxi) %>%
+  gf_labs(title = "Plot G: Counts of Tips by Hour and Day of Week",
+          subtitle = "Swapped the Facets")  
+```
+
+```{r}
+data("HELPrct")
+HELPrct
+```
+
+```{r}
+gf_bar(~ substance)
+```

@@ -1,0 +1,140 @@
+---
+title: "Day4: Diamond Race"
+author: "Hardik Monga"
+---
+
+# Diamonds Dataset
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(ggformula)
+library(skimr)
+##
+library(crosstable) # Fast stats for multiple variables in table form
+```
+
+```{r}
+diamonds
+
+glimpse(diamonds)
+skim(diamonds)
+inspect(diamonds)
+
+```
+
+### Research Questions:
+
+What is the distribution of the target variable price?
+
+What is the distribution of the predictor variable carat?
+
+Does a price distribution vary based upon type of cut, clarity, and color?
+
+```{r}
+gf_histogram(~ price, data = diamonds) %>%
+  gf_labs(title = "Plot 1A: Diamond Prices",
+          caption = "wooooow")
+## More bins
+gf_histogram(~ price, data = diamonds, 
+  bins = 1000) %>%
+  gf_labs(title = "Plot 1B: Diamond Prices",
+          caption = "ggformula")
+```
+
+```{r}
+gf_histogram(~carat, data = diamonds, bins = 100) %>% 
+  gf_labs(title= "Plot : Diamond Carat Values")
+
+```
+
+```{r}
+gf_histogram(~ price, fill = ~ cut, data = diamonds) %>%
+  gf_labs(title = "Plot 3A: Diamond Prices",caption = "ggformula") 
+###
+diamonds %>% 
+  gf_histogram(~ price, fill = ~ cut, color = "black", lwd= 0.3, alpha = 0.3) %>%
+  gf_labs(title = "Plot 3B: Prices by Cut",
+          caption = "ggformula")
+###
+diamonds %>% 
+  gf_histogram(~ price, fill = ~ cut, color = "black", lwd= 0.3, alpha = 0.3) %>%
+  gf_facet_wrap(~ cut) %>%
+  gf_labs(title = "Plot 3C: Prices by Filled and Facetted by Cut",
+          caption = "ggformula") %>%
+  gf_theme(theme(axis.text.x = element_text(angle = 45, hjust = 1)))
+###
+diamonds %>% 
+  gf_histogram(~ price, fill = ~ cut, color = "black", lwd= 0.3, alpha = 0.3) %>% 
+  gf_facet_wrap(~ cut, scales = "free_y", nrow = 1) %>%
+  gf_labs(title = "Plot 3D: Prices Filled and Facetted by Cut", 
+          subtitle = "Free y-scale",
+          caption = "ggformula") %>%
+  gf_theme(theme(axis.text.x = element_text(angle = 90, hjust = 1)))
+```
+
+```{r}
+#| eval: false
+install.packages("shiny")
+library(shiny)
+runExample("01_hello") # an interactive histogram
+```
+
+# Race Dataset
+
+```{r}
+race_df <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv")
+rank_df <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv")
+
+race_df
+rank_df
+
+```
+
+```{r}
+
+glimpse(race_df)
+```
+
+```{r}
+glimpse(rank_df)
+```
+
+```{r}
+skim(race_df)
+```
+
+```{r}
+skim(rank_df)
+```
+
+```{r}
+# inspect(race_df) # does not work with hms and difftime variables
+inspect(rank_df)
+```
+
+```{r}
+race_df %>% count(country) %>% arrange(desc(n))
+rank_df %>% count(nationality) %>% arrange(desc(n))
+```
+
+```{r}
+rank_df %>% 
+  filter(rank %in% c(1,2,3)) %>%
+  count(nationality) %>% arrange(desc(n))
+```
+
+```{r}
+
+longest_races <- race_df %>%
+  slice_max(n = 5, order_by = distance) # Longest distance races
+longest_races
+```
+
+```{r}
+
+longest_races %>%
+  left_join(., rank_df, by  = "race_year_id") %>% # total participants in longest 4 races
+  filter(rank %in% c(1:10)) %>% # Top 10 ranks
+  count(nationality) %>% arrange(desc(n))
+```
