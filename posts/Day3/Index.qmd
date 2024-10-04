@@ -124,7 +124,3 @@ gf_props(~ hour | dow, fill = ~ tip, position = 'fill', data = taxi) %>%
 data("HELPrct")
 HELPrct
 ```
-
-```{r}
-gf_bar(~ substance)
-```
