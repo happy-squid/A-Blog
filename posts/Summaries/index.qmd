@@ -1,0 +1,144 @@
+---
+title: "Summaries"
+author: "Hardik Monga"
+---
+
+## Intro
+
+Making a new post.
+
+## Installing Libraries
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(skimr)
+library(knitr)
+library(mosaic)
+library(kableExtra)
+```
+
+## Look at the mpg dataset
+
+```{r}
+mpg %>%
+  head(10)
+```
+
+## Ways to examine the mpg dataset
+
+#### Glimpse
+
+```{r}
+glimpse(mpg)
+```
+
+#### Inspect
+
+```{r}
+mpg %>% mosaic::inspect()
+```
+
+#### Skim
+
+```{r}
+mpg %>% skimr::skim()
+```
+
+## Mutating mpg's variables to factors and saving them as mpg_modified
+
+```{r}
+mpg_modified <- mpg %>%
+  dplyr::mutate(
+    cyl = as_factor(cyl),
+    fl = as_factor(fl),
+    drv = as_factor(drv),
+    class = as_factor(class),
+    trans = as_factor(trans)
+  )
+glimpse(mpg_modified)
+```
+
+## Examining and Modifying babynames dataset
+
+#### Import babynames dataset
+
+```{r}
+library(babynames)
+```
+
+#### babynames dataset
+
+```{r}
+babynames
+```
+
+#### Glimpse
+
+```{r}
+glimpse(babynames)
+```
+
+#### Inspect
+
+```{r}
+mosaic::inspect(babynames)
+```
+
+#### Skim
+
+```{r}
+skimr::skim(babynames)
+```
+
+#### Mutate babynames
+
+```{r}
+babynames_modified <- babynames %>%
+  dplyr::mutate(
+    year = as_factor(year),
+    sex = as_factor(sex),
+    name = as_factor(name),
+    n = as_factor(n),
+    prop = as_factor(prop)
+  )
+glimpse(babynames_modified)
+```
+
+#### Display babynames_modified
+
+```{r}
+babynames_modified
+```
+
+## Group by in mpg
+
+```{r}
+mpg_modified %>% filter(manufacturer == "audi") %>% 
+  group_by(manufacturer, class, year) %>%
+  summarize(average_cty = mean(cty), average_hwy=mean(hwy) )
+```
+
+## Math Anxiety
+
+Introooooooooooooooo
+
+## Analysing Math Anxiety Data
+
+#### Accessing Math Anxiety Dataset from PC
+
+```{r}
+math_anxiety <- read_delim(file = "../../data/MathAnxiety.csv", delim = ";")
+math_anxiety
+```
+
+#### Average of Grades Both Genders in Primary and Secondary
+
+```{r}
+math_anxiety %>% 
+  group_by(Gender, Grade) %>%
+  summarize(average_Arith = mean(Arith), average_AMAS = mean(AMAS), average_RCMAS = mean(RCMAS))
+```
+
+#### 
+

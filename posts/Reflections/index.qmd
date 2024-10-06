@@ -1,0 +1,29 @@
+---
+title: "Reflections"
+author: "Hardik Monga"
+---
+
+# Week1
+
+I chose this course because I wanted to challenge myself and learn something new. The course title immediately caught my attention, and for some reason, I felt drawn to it. I also figured that learning how to visualize data from a dataset could be incredibly useful in the future, whether for professional projects or personal interests. On the first day of class, we started by creating line graphs using pre-installed datasets. Initially, I was a bit skeptical, especially after seeing the RStudio IDE interface—it looked quite technical, and I was worried that the following days might be tedious. However, once we began making those first few line graphs, my excitement was reignited. A major source of this excitement was the idea of having my own blog, where I could upload and showcase anything I wanted. I particularly enjoyed the freedom to customize titles and play with the syntax to achieve a variety of outputs.
+
+The second day of class felt a little more intense, as we covered a lot more concepts in a shorter time. I struggled to grasp some ideas during the explanations, but reviewing the course blog, Googling topics, and discussing them with my partner Varad really helped me catch up. RStudio’s functions, like \`group_by\` and \`inspect\`, felt almost magical in their capabilities. Compared to MS Excel, RStudio provides a more flexible environment where I can have finer control over the data analysis, rather than being limited to predefined functions.
+
+The questions I wondered about:\
+Is there a more recent data analytics tool like R with a better minimal interface?\
+Could we access datasets from the web instead of installing them and saving them in a local folder?
+
+Any idea you have of using these ideas somewhere else; how these may affect your life choices:\
+My idea is to track my expenses and other personal parameters over the course of a few months. By analyzing this data using R, I hope to uncover insights about my habits and patterns that I may not be aware of. These insights could reveal trends or behaviors that have been influencing my life choices in ways I hadn’t previously considered. With the help of data visualization and analysis, I believe I might come to some unexpected realizations that could inspire positive changes in how I manage my finances or other areas of my life.
+
+# Week2
+
+Reflecting on Days 3 and 4 of the RStudio class, it was a journey of growing confidence in some areas while encountering new challenges in others. Day 3 started off with bar graphs, a major step forward in visualizing data more effectively. Unlike previous methods such as glimpse, inspect, and skim, which provided textual summaries, bar graphs opened up a world of detailed visual analysis. Customization syntax gave more control over how the data was represented, allowing a deeper exploration and interpretation. By adjusting colors, labels, and axes, I could see how powerful these visuals were in conveying data insights, making patterns and trends much clearer. Working through this process was a game-changer for me, as it shifted my mindset from simply examining data in tables to understanding how to best communicate that information through graphics.
+
+As I progressed through the bar graph exercise, I began to feel more comfortable with the class's flow. By Day 3, the pattern of instruction and hands-on practice had become familiar, easing the initial learning curve I felt in the earlier days. It was a reassuring realization—I was no longer just following along, but truly grasping the concepts and developing a sense of independence in the work. However, the second task of the day presented a different type of challenge: publishing a blog using Netlify and GitHub. This process was far from smooth for me. The number of steps involved felt overwhelming, and the instructions, while thorough, left me confused at several points. Each new step brought hesitation, and I found myself glancing at my classmates' screens for hints on what to do next. Despite multiple tries, the "Page Not Found" error seemed to mock my efforts, making the experience frustrating.
+
+It was only with the help of my friend, Varad, who had also consulted another student, that I managed to piece together the correct steps. Even though the blog link was still not functional by the end of Day 3, I left feeling optimistic that I could resolve it the next day.
+
+Day 4 marked another shift in the class structure. Instead of Arvind, guiding us through tasks, we were divided into teams and left to work more independently. The change in environment was noticeable—it required more self-direction, which I initially struggled with. Reading through instructions and coordinating with teammates took some getting used to. Without the constant energy and engagement from Arvind, the atmosphere felt less dynamic, and I found it harder to concentrate on RStudio work in the morning session. After lunch, I slowly acclimated to the new working style, but I couldn’t help but miss the livelier and more competitive energy that had characterized the first three days. By the end of the day, I had adjusted, but the shift highlighted how much I had come to rely on the instructor-led approach, which made learning feel structured and engaging.
+
+In summary, Days 3 and 4 brought a mix of successes and frustrations. I gained confidence in visual data analysis and putting up my own Netlify Blog, but struggled with the technicalities of deploying a blog. While the shift to team-based learning was initially a hurdle, it was also a lesson in adapting to new working environments.

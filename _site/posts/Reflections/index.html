@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Hardik Monga">
 
-<title>Posts – A-Blog</title>
+<title>Reflections – A-Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +67,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">A-Blog</span>
     </a>
   </div>
@@ -149,7 +90,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -172,283 +113,59 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
+    <div class="quarto-title column-body">
+      <h1 class="title">Reflections</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Hardik Monga </p>
+            </div>
+    </div>
       
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="week1" class="level1">
+<h1>Week1</h1>
+<p>I chose this course because I wanted to challenge myself and learn something new. The course title immediately caught my attention, and for some reason, I felt drawn to it. I also figured that learning how to visualize data from a dataset could be incredibly useful in the future, whether for professional projects or personal interests. On the first day of class, we started by creating line graphs using pre-installed datasets. Initially, I was a bit skeptical, especially after seeing the RStudio IDE interface—it looked quite technical, and I was worried that the following days might be tedious. However, once we began making those first few line graphs, my excitement was reignited. A major source of this excitement was the idea of having my own blog, where I could upload and showcase anything I wanted. I particularly enjoyed the freedom to customize titles and play with the syntax to achieve a variety of outputs.</p>
+<p>The second day of class felt a little more intense, as we covered a lot more concepts in a shorter time. I struggled to grasp some ideas during the explanations, but reviewing the course blog, Googling topics, and discussing them with my partner Varad really helped me catch up. RStudio’s functions, like `group_by` and `inspect`, felt almost magical in their capabilities. Compared to MS Excel, RStudio provides a more flexible environment where I can have finer control over the data analysis, rather than being limited to predefined functions.</p>
+<p>The questions I wondered about:<br>
+Is there a more recent data analytics tool like R with a better minimal interface?<br>
+Could we access datasets from the web instead of installing them and saving them in a local folder?</p>
+<p>Any idea you have of using these ideas somewhere else; how these may affect your life choices:<br>
+My idea is to track my expenses and other personal parameters over the course of a few months. By analyzing this data using R, I hope to uncover insights about my habits and patterns that I may not be aware of. These insights could reveal trends or behaviors that have been influencing my life choices in ways I hadn’t previously considered. With the help of data visualization and analysis, I believe I might come to some unexpected realizations that could inspire positive changes in how I manage my finances or other areas of my life.</p>
+</section>
+<section id="week2" class="level1">
+<h1>Week2</h1>
+<p>Reflecting on Days 3 and 4 of the RStudio class, it was a journey of growing confidence in some areas while encountering new challenges in others. Day 3 started off with bar graphs, a major step forward in visualizing data more effectively. Unlike previous methods such as glimpse, inspect, and skim, which provided textual summaries, bar graphs opened up a world of detailed visual analysis. Customization syntax gave more control over how the data was represented, allowing a deeper exploration and interpretation. By adjusting colors, labels, and axes, I could see how powerful these visuals were in conveying data insights, making patterns and trends much clearer. Working through this process was a game-changer for me, as it shifted my mindset from simply examining data in tables to understanding how to best communicate that information through graphics.</p>
+<p>As I progressed through the bar graph exercise, I began to feel more comfortable with the class’s flow. By Day 3, the pattern of instruction and hands-on practice had become familiar, easing the initial learning curve I felt in the earlier days. It was a reassuring realization—I was no longer just following along, but truly grasping the concepts and developing a sense of independence in the work. However, the second task of the day presented a different type of challenge: publishing a blog using Netlify and GitHub. This process was far from smooth for me. The number of steps involved felt overwhelming, and the instructions, while thorough, left me confused at several points. Each new step brought hesitation, and I found myself glancing at my classmates’ screens for hints on what to do next. Despite multiple tries, the “Page Not Found” error seemed to mock my efforts, making the experience frustrating.</p>
+<p>It was only with the help of my friend, Varad, who had also consulted another student, that I managed to piece together the correct steps. Even though the blog link was still not functional by the end of Day 3, I left feeling optimistic that I could resolve it the next day.</p>
+<p>Day 4 marked another shift in the class structure. Instead of Arvind, guiding us through tasks, we were divided into teams and left to work more independently. The change in environment was noticeable—it required more self-direction, which I initially struggled with. Reading through instructions and coordinating with teammates took some getting used to. Without the constant energy and engagement from Arvind, the atmosphere felt less dynamic, and I found it harder to concentrate on RStudio work in the morning session. After lunch, I slowly acclimated to the new working style, but I couldn’t help but miss the livelier and more competitive energy that had characterized the first three days. By the end of the day, I had adjusted, but the shift highlighted how much I had come to rely on the instructor-led approach, which made learning feel structured and engaging.</p>
+<p>In summary, Days 3 and 4 brought a mix of successes and frustrations. I gained confidence in visual data analysis and putting up my own Netlify Blog, but struggled with the technicalities of deploying a blog. While the shift to team-based learning was initially a hurdle, it was also a lesson in adapting to new working environments.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1728032201414" data-listing-reading-time-sort="2" data-listing-word-count-sort="383">
-<div class="thumbnail">
-<p><a href="./posts/Day4/index.html" class="no-external"></a></p><a href="./posts/Day4/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Day4/index_files/figure-html/unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Day4/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Day4/index.html" class="no-external">Day4: Diamond Race</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Day4/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Day4/index.html" class="no-external"><strong>Variable type: factor</strong></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Day4/index.html" class="no-external"></a></p><a href="./posts/Day4/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1728235096746" data-listing-reading-time-sort="3" data-listing-word-count-sort="589">
-<div class="thumbnail">
-<p><a href="./posts/Day3/index.html" class="no-external"></a></p><a href="./posts/Day3/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Day3/index_files/figure-html/unnamed-chunk-7-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Day3/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Day3/index.html" class="no-external">Day3: Counts</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Day3/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Day3/index.html" class="no-external"><strong>Variable type: character</strong></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Day3/index.html" class="no-external"></a></p><a href="./posts/Day3/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1728244743712" data-listing-reading-time-sort="5" data-listing-word-count-sort="918">
-<div class="thumbnail">
-<p><a href="./posts/Reflections/index.html" class="no-external"></a></p><a href="./posts/Reflections/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/Reflections/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Reflections/index.html" class="no-external">Reflections</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Reflections/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Reflections/index.html" class="no-external">I chose this course because I wanted to challenge myself and learn something new. The course title immediately caught my attention, and for some reason, I felt drawn to it.…</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Reflections/index.html" class="no-external"></a></p><a href="./posts/Reflections/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1727429560082" data-listing-reading-time-sort="1" data-listing-word-count-sort="151">
-<div class="thumbnail">
-<p><a href="./posts/Day2/index.html" class="no-external"></a></p><a href="./posts/Day2/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/Day2/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Day2/index.html" class="no-external">Day2: Examining, Modifying and Grouping Datasets</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Day2/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Day2/index.html" class="no-external">Making a new post.</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Day2/index.html" class="no-external"></a></p><a href="./posts/Day2/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1728244928916" data-listing-reading-time-sort="1" data-listing-word-count-sort="196">
-<div class="thumbnail">
-<p><a href="./posts/Summaries/index.html" class="no-external"></a></p><a href="./posts/Summaries/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/Summaries/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Summaries/index.html" class="no-external">Summaries</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Summaries/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Summaries/index.html" class="no-external">Making a new post.</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Summaries/index.html" class="no-external"></a></p><a href="./posts/Summaries/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1727429507599" data-listing-reading-time-sort="1" data-listing-word-count-sort="43">
-<div class="thumbnail">
-<p><a href="./posts/Day1/index.html" class="no-external"></a></p><a href="./posts/Day1/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Day1/index_files/figure-html/unnamed-chunk-4-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Day1/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Day1/index.html" class="no-external">Day 1: Line Graphs</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Day1/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Day1/index.html" class="no-external">thiojd sjnhsk gh fgkjhnsdkg sjlkgjsk r</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Day1/index.html" class="no-external"></a></p><a href="./posts/Day1/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1728032199129" data-listing-reading-time-sort="1" data-listing-word-count-sort="48">
-<div class="thumbnail">
-<p><a href="./posts/Day2- Math Anxiety/index.html" class="no-external"></a></p><a href="./posts/Day2- Math Anxiety/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/Day2- Math Anxiety/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Day2- Math Anxiety/index.html" class="no-external">Day2: Math Anxiety</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Day2- Math Anxiety/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Day2- Math Anxiety/index.html" class="no-external">Introooooooooooooooo</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Day2- Math Anxiety/index.html" class="no-external"></a></p><a href="./posts/Day2- Math Anxiety/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1728244826039" data-listing-reading-time-sort="4" data-listing-word-count-sort="628">
-<div class="thumbnail">
-<p><a href="./posts/Counts/index.html" class="no-external"></a></p><a href="./posts/Counts/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Counts/index_files/figure-html/unnamed-chunk-7-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Counts/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Counts/index.html" class="no-external">Counts</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Counts/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Counts/index.html" class="no-external"><strong>Variable type: character</strong></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/Counts/index.html" class="no-external"></a></p><a href="./posts/Counts/index.html" class="no-external">
-<div class="listing-author">
-Hardik Monga
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="news,code,analysis" data-listing-date-sort="1727289000000" data-listing-file-modified-sort="1727327354757" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
-<div class="thumbnail">
-<p><a href="./posts/post-with-code/index.html" class="no-external"></a></p><a href="./posts/post-with-code/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/post-with-code/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/post-with-code/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post-with-code/index.html" class="no-external">Post With Code</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/post-with-code/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/post-with-code/index.html" class="no-external">This is a post with executable code.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/post-with-code/index.html" class="no-external">
-<div class="listing-date">
-Sep 26, 2024
-</div>
-<div class="listing-author">
-Harlow Malloc
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

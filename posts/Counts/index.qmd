@@ -1,5 +1,5 @@
 ---
-title: "Day3: Counts"
+title: "Counts"
 author: "Hardik Monga"
 ---
 
@@ -14,7 +14,6 @@ library(kableExtra)
 
 ```{r}
 taxi <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/modeldata/taxi.csv")
-taxi
 ```
 
 ### Skim
@@ -121,7 +120,32 @@ gf_props(~ hour | dow, fill = ~ tip, position = 'fill', data = taxi) %>%
           subtitle = "Swapped the Facets")  
 ```
 
+# Your Turn
+
 ```{r}
-data("HELPrct")
-HELPrct
+star_trek <- read_delim(file = "../../data/star_trek_books.csv", delim = ";")
+```
+
+```{r}
+star_trek
+
+```
+
+```{r}
+glimpse(star_trek)
+skim(star_trek)
+inspect(star_trek)
+```
+
+# Plotted graphs
+
+```{r}
+gf_bar(~ publisher, data = star_trek) %>%
+  gf_theme(theme(axis.text.x = element_text(angle = 45, hjust = 1)))
+
+gf_bar(~ series, data = star_trek) %>%
+  gf_theme(theme(axis.text.x = element_text(angle = 45, hjust = 1)))
+
+
+
 ```
