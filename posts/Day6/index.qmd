@@ -1,0 +1,108 @@
+---
+title: "Day6: Inference for a Single Mean"
+author: "Hardik Monga"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(ggformula)
+library(infer)
+library(broom) # Clean test results in tibble form
+library(resampledata) # Datasets from Chihara and Hesterberg's book
+library(openintro) # More datasets
+```
+
+```{r}
+set.seed(40)  # for replication
+# Data as individual vectors ( for t.tests etc)
+y <- rnorm(50, mean = 2, sd = 2)
+
+# And as tibble too
+mydata <- tibble(x = y)
+mydata
+```
+
+```{r}
+mydata %>%
+    gf_density(~y) %>%
+    gf_fitdistr(dist = "dnorm") %>%
+    gf_labs(title = "Densities of Original Data Variables", subtitle = "Compared with Normal Density")
+```
+
+```{r}
+signed_rank <- function(x) {
+    sign(x) * rank(abs(x))
+}
+```
+
+```{r}
+# Calculate exact mean
+obs_mean <- mean( ~ y, data = mydata)
+belief1 <- 0 # What we think the mean is
+obs_diff_mosaic <- obs_mean - belief1
+obs_diff_mosaic
+```
+
+```{r}
+## Steps in Permutation Test
+## Repeatedly Shuffle polarities of data observations
+## Take means
+## Compare all means with the real-world observed one
+null_dist_mosaic <- 
+mosaic::do(9999) * mean( ~ abs(y) * 
+          sample(c(-1, 1), # +/- 1s multiply y
+            length(y),     # How many +/- 1s?
+            replace = T),  # select with replacement
+        data = mydata)
+##
+range(null_dist_mosaic$mean)
+```
+
+```{r}
+##
+## Plot this NULL distribution
+gf_histogram(
+  ~ mean,
+  data = null_dist_mosaic,
+  fill = ~ (mean >= obs_diff_mosaic),
+  bins = 50, title = "Distribution of Permutation Means under Null Hypothesis",
+  subtitle = "Why is the mean of the means zero??") %>%
+  gf_labs(x = "Calculated Random Means",
+          y = "How Often do these occur?") %>% 
+  gf_vline(xintercept = obs_diff_mosaic, colour = "red")
+```
+
+```{r}
+# p-value
+# Null distributions are always centered around zero. Why?
+prop(~ mean >= obs_diff_mosaic, 
+     data = null_dist_mosaic)
+```
+
+```{r}
+##
+## Resample with replacement from the one sample of 50
+## Calculate the mean each time
+null_toy_bs <- mosaic::do(4999) * 
+  mean( ~ sample(y,
+            replace = T), # select with replacement
+        data = mydata)
+
+## Plot this NULL distribution
+gf_histogram(
+  ~ mean,
+  data = null_toy_bs,
+  bins = 50, 
+  title = "Distribution of Bootstrap Means") %>%
+  gf_labs(x = "Calculated Random Means",
+          y = "How Often do these occur?") %>% 
+  gf_vline(xintercept = ~ belief1, colour = "red") 
+```
+
+```{r}
+prop(~ mean >= belief1, 
+     data = null_toy_bs) +
+  prop(~ mean <= - belief1, 
+     data = null_toy_bs)
+```

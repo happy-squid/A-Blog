@@ -1,0 +1,92 @@
+---
+title: "Women Live Longer?"
+author: "Hardik Monga"
+---
+
+# Libraries Used
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(ggformula)
+```
+
+# age Dataset - Import, Skim, Inspect
+
+```{r}
+age <- read_delim(file = "../../data/age-dataset.csv", delim = ";")
+age
+```
+
+```{r}
+skim(women)
+inspect(women)
+```
+
+# Filtering the dataset for the year 2015
+
+```{r}
+year2015_age <- age %>%
+    filter(Year == 2015)
+
+year2015_age
+
+
+
+```
+
+# Renaming the column names and Putting Decimal points on the Life Expectancy column values
+
+```{r}
+
+
+new_year2015_age <- year2015_age %>%
+  rename(
+    ent = Entity,
+    code = Code,
+    year = Year,
+    female_expc = `Life expectancy - Sex: female - Age: at birth - Variant: estimates`,
+    male_expc = `Life expectancy - Sex: male - Age: at birth - Variant: estimates`,
+    pop = `Population - Sex: all - Age: all - Variant: estimates`,
+    cont = Continent
+    )
+
+new_year2015_age <- new_year2015_age %>%
+  mutate(female_expc = sprintf("%.1f", female_expc / 10),
+         male_expc = sprintf("%.1f", male_expc / 10),
+         )
+
+new_year2015_age
+```
+
+# Variable Types
+
+**Quantitative Variables:** female_expc, male_expc, pop
+
+**Qualitative Variables:** ent, code, year, cont
+
+**Target Variable**: female_expc, male_expc
+
+**Predictor variables**: pop
+
+# Plotting the ScatterPlot Graph
+
+```{r}
+# Converting variable type from cha to numeric
+new_year2015_age <- new_year2015_age %>%
+  mutate(
+    male_expc = as.numeric(as.character(male_expc)),
+    female_expc = as.numeric(as.character(female_expc))
+  )
+
+new_year2015_age %>%
+  gf_point(male_expc ~ female_expc, size = ~pop, shape = 1) %>% 
+  gf_refine(annotate("text", x = 70, y = 75, label = "Slope = 1")) %>% 
+  gf_lm(title = "Life Expectancy Across Countries and Years")
+
+```
+
+# Inference:
+
+I was not able to plot this graph as desired. Will try to figure out the reasons in the future. The first thing that I am able to deduce from this graph is that countries with larger populations have a life expectancy from 65-75 years. It also seems that, women live 5-10 years longer than men.

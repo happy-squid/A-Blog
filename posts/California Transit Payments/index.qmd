@@ -1,0 +1,85 @@
+---
+title: "Valentine's Day Spending"
+author: "Hardik Monga"
+---
+
+# Libraries Used
+
+```{r}
+library(tidyverse)
+library(tidyr)
+
+library(mosaic)
+library(skimr)
+library(ggformula)
+library(ggprism)
+library(ggplot2)
+
+```
+
+# gifts_age Dataset - Import, Skim, Inspect
+
+```{r}
+gifts_age <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv")
+gifts_age
+skim(gifts_age)
+inspect(gifts_age)
+```
+
+# Variable Types
+
+**Quantitative Variables:** SpendingCelebrating, Candy, Flowers, Clothing, EveningOut, GiftCards, GreetingCards, Jewelry
+
+**Qualitative Variables:** Age
+
+**Observations:** Interestingly, Mean of the amount spent on Candy is the highest among all the items, ie. 57 while Mean for the amount spent on Clothing os 22.83 which is quite unexpected.
+
+**Target Variable**: SpendingCelebrating, Candy, Flowers, Clothing, EveningOut, GiftCards, GreetingCards, Jewelry (the amount spent per gift for all these items is the target variable)
+
+**Predictor variables**: Age
+
+# Plotting a Point graph of SpendingCelebrating and Age
+
+The line was not showing in the line graph , thus google suggested me to check if point graph is showing something or not to check the data type of the variables.
+
+```{r}
+
+gifts_age %>%
+  gf_point(SpendingCelebrating ~ Age) %>%
+  gf_labs(
+    title = "Spending Celebrating by Age",
+    x = "Age",
+    y = "Spending Celebrating"
+  )
+```
+
+# Plotting the Line graph 
+
+Here, I tried to customly changing the shapes of the points of the different Items but it didn't work for some unknown reason.
+
+```{r}
+
+gifts_age_long <- gifts_age %>%
+  pivot_longer(cols = -Age, names_to = "Item", values_to = "Spending")
+#I found that pivot_longer is used when you have multiple columns to plot on the y-axis. Here, names_to and values_to avail the rest of columns' title and numeric data sperately.
+
+ggplot(gifts_age_long, aes(x = Age, y = Spending, color = Item, group = Item, shape = Item)) +
+  geom_line() +
+  geom_point(shape = 15, size = 3) + 
+  labs(title = "Valentine's Day Spending over Age",
+       x = "Age Group in Years",
+       y = "Amounts Spent per Gift") +
+  theme_minimal()+
+    scale_shape_manual(values = c(16, 17, 15, 3, 8, 1,8,1)) 
+
+```
+
+# Thoughts and Inference:
+
+-   **Research Experiment that might have been conducted to obtain that data:** I think the motive behind the collection of this data was to check the amount different age groups spend for different types of gifts on Valentine's Day. This data can turn out to be helpful for both big convenience stores, Flower shops, Jewellary shops and small retailers on Valentine's Day and also in general.
+
+-   **Questions that the Graph seeks to answer:** The graphs seeks to compare the price of different items bought by different age groups on Valentine's Day.
+
+-   **My Experience:** For a long time, I was not able to figure out plotting multiple lines on the same graph until I accidentally came across pivot_longer through extensive googling and chatgpting. I still was not able to use unique shapes for each linegraph.
+
+-   **Inference:** Each line graph seems to be going normal except the 'Candy' and 'GreetingCards' lines which seem to be going almost symmetrical and then converging in the end. I get the decline in candy consumption for older people but why is there a sudden increase in spending on greeting cards from 35 onwards?

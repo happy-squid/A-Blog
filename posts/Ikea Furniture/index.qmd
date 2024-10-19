@@ -1,0 +1,106 @@
+---
+title: "Ikea Furniture"
+author: "Hardik Monga"
+---
+
+# Libraries Used
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(ggformula)
+library(ggridges)
+library(ggplot2)
+```
+
+# Ikea Dataset - Import, Skim and Inspect
+
+```{r}
+ikea <- read_delim(file = "../../data/ikea-modified.csv", delim = ";")
+ikea
+
+skim(ikea)
+inspect(ikea)
+```
+
+# Variable Types and Observations
+
+**Quantitative Variables:** price, old_price, sellable_online, other_colors, depth, height, width, price_usd, category_total
+
+**Qualitative Variables:** item_id, name, category, link, short_description, designer
+
+**Observations:** There are alot of missing row for depth, height and width variables. The minimum price for an item is 30, the max price for an item is 95850, while the median price is 5950. This median of the prices shows items with price in 5 digits are an exception.
+
+**Target Variable**: price, price_usd
+
+**Predictor variables**: category, other_colors
+
+# Plotting the Ridge Graph with both price and price_usd
+
+#### 1. price on x-axis
+
+```{r}
+ggplot(ikea, aes(x = price, y = category)) + 
+  geom_density_ridges(scale = 2, alpha = 0.7) +
+  labs(x = "Price", y = "Category") +
+  theme_minimal() 
+```
+
+#### 2. price_usd on x-axis
+
+```{r}
+ggplot(ikea, aes(x = price_usd, y = category)) + 
+  geom_density_ridges(scale = 2, alpha = 0.7) +
+  labs(x = "Price (USD)", y = "Category") +
+  theme_minimal() 
+```
+
+**Observations:** This graph plots multiple ridges for the same category. After searching on google, I found that there might be sub-categories in the category variable which are showing up as different ridges. But this is only the case when I use price_usd as the target variable and not when I use price. I still could not find a reason for that.
+
+#### 3. price_usd on x-axis with grouped categories
+
+Following google's suggestions, I have grouped the category column which seems to have solved the problem of multiple ridges.
+
+```{r}
+# Ensure price_usd is numeric
+
+
+ggplot(ikea, aes(x = price_usd, y = category, group = category)) + 
+  geom_density_ridges(scale = 2, alpha = 0.7) +
+  labs(x = "Price (USD)", y = "Category") +
+  theme_minimal() 
+```
+
+# Plotting the Ridge Graph with both price and price_usd including the other_colors variable
+
+#### 1. price_usd on x-axis along with other_colors
+
+I am yet to figure out how the group code works in this. I have simply copied and modified the code from google for this graph.
+
+```{r}
+
+ikea$other_colors <- as.factor(ikea$other_colors)
+
+ggplot(ikea, aes(x = price_usd, y = category, fill= other_colors, group = interaction(category, other_colors))) + 
+  geom_density_ridges(scale = 1, alpha = 0.5)
+```
+
+#### 2. price on x-axis along with other_colors
+
+```{r}
+ikea$other_colors <- as.factor(ikea$other_colors)
+
+ggplot(ikea, aes(x = price, y = category, fill= other_colors)) + 
+  geom_density_ridges(scale = 1, alpha = 0.5)
+```
+
+# Thoughts and Inference:
+
+-   **Research Experiment that might have been conducted to obtain that data:** I think the motive behind the collection of this data was to track the items present in some Ikea Warehouse. This data doesn't seem to be motivated by any research query as It doesn't contain the variables like production cost, raw materials information, transport cost, or other predictor variables which determine the price of an item.
+
+-   **Questions that the Graph seeks to answer:** Looking into the difference in the price of Ikea items available in different colors versus only in one color.
+
+-   **My Experience:** I was not able to make the exact replication of the graph given and I think the main reason behind that would be the missing decimal points in the values in the price variable. I am not able to achieve the same range on the x-axis for price and price_usd. I think if I fix the decimal point in the values in those variables, my graph plot would look closer to the original version.
+
+-   **Inference:** Looking at the majority of graphs in all the categories, It seems that the items with no other color options available are in the lesser price range compared to the items with multiple color options. It is only the 'Chairs' and 'Tables and Desks' Categories which seem to contradict the trend with less price range of items available in multiple colors. I think the reason behind this might be that chairs and desks are more frequently bought, lower price items and hence, one model is available in multiple colors in a lower price range.
