@@ -73,7 +73,6 @@ new_year2015_age
 # Plotting the ScatterPlot Graph
 
 ```{r}
-# Converting variable type from cha to numeric
 new_year2015_age <- new_year2015_age %>%
   mutate(
     male_expc = as.numeric(as.character(male_expc)),

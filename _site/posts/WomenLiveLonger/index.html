@@ -178,6 +178,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<section id="libraries-used" class="level1">
+<h1>Libraries Used</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -239,6 +241,9 @@ The following object is masked from 'package:mosaic':
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="age-dataset---import-skim-inspect" class="level1">
+<h1>age Dataset - Import, Skim, Inspect</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">"../../data/age-dataset.csv"</span>, <span class="at">delim =</span> <span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -385,9 +390,9 @@ quantitative variables:
 2 weight numeric 115 124.5    135 148.0 164 136.7333 15.498694 15       0</code></pre>
 </div>
 </div>
-<p>Quantitative Variables: Life Expectancy Female, Life Expectancy Male, Population</p>
-<p>Qualitative Variables: Entity, Code, Year, Continent</p>
-<p>Observations:</p>
+</section>
+<section id="filtering-the-dataset-for-the-year-2015" class="level1">
+<h1>Filtering the dataset for the year 2015</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>year2015_age <span class="ot">&lt;-</span> age <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2015</span>)</span>
@@ -416,6 +421,9 @@ quantitative variables:
 #   Continent &lt;chr&gt;</code></pre>
 </div>
 </div>
+</section>
+<section id="renaming-the-column-names-and-putting-decimal-points-on-the-life-expectancy-column-values" class="level1">
+<h1>Renaming the column names and Putting Decimal points on the Life Expectancy column values</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>new_year2015_age <span class="ot">&lt;-</span> year2015_age <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
@@ -451,13 +459,22 @@ quantitative variables:
 # ℹ 293 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="variable-types" class="level1">
+<h1>Variable Types</h1>
+<p><strong>Quantitative Variables:</strong> female_expc, male_expc, pop</p>
+<p><strong>Qualitative Variables:</strong> ent, code, year, cont</p>
+<p><strong>Target Variable</strong>: female_expc, male_expc</p>
+<p><strong>Predictor variables</strong>: pop</p>
+</section>
+<section id="plotting-the-scatterplot-graph" class="level1">
+<h1>Plotting the ScatterPlot Graph</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting variable type from cha to numeric</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>new_year2015_age <span class="ot">&lt;-</span> new_year2015_age <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">male_expc =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(male_expc)),</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">female_expc =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(female_expc))</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>new_year2015_age <span class="ot">&lt;-</span> new_year2015_age <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">male_expc =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(male_expc)),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">female_expc =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(female_expc))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There were 2 warnings in `mutate()`.
 The first warning was:
@@ -497,20 +514,13 @@ Caused by warning:
 </div>
 </div>
 </div>
-<ul>
-<li><p>Target Variable: price and Predictor variables: width</p></li>
-<li><p>Define the Research Experiment that might have been conducted to obtain that data</p></li>
-<li><p>Define the Question or Questions that the Graph seeks to answer</p></li>
-<li><p>Replicate the graph in code</p></li>
-<li><p>Add you inference, and tell your story</p></li>
-<li><p>What is the kind of plot used in the chart?</p></li>
-<li><p>What variables have been used in the chart?</p></li>
-<li><p>What can you say about the scale on X-axis?</p></li>
-<li><p>What can you say about prices of items that are available in =single colour versus those that are available in more than one colour?</p></li>
-<li><p>What is a good hypothesis to interpret the double-humped nature of some of the curves?</p></li>
-</ul>
+</section>
+<section id="inference" class="level1">
+<h1>Inference:</h1>
+<p>I was not able to plot this graph as desired. Will try to figure out the reasons in the future. The first thing that I am able to deduce from this graph is that countries with larger populations have a life expectancy from 65-75 years. It also seems that, women live 5-10 years longer than men.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
