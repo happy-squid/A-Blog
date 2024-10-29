@@ -10,11 +10,15 @@ library(skimr)
 library(dplyr)
 library(ggformula)
 library(crosstable)
+library(ggridges)
 ```
 
 ```{r}
 tip_data<- read_delim(file = "../../data/tip.csv")
 tip_data
+inspect(tip_data)
+skim(tip_data)
+glimpse(tip_data)
 ```
 
 ```{r}
@@ -23,6 +27,16 @@ tip_mod <- tip_data %>%
   dplyr::mutate(
     pref = as_factor(`Food preferance`))
 tip_mod
+```
+
+```{r}
+tip_mod%>%
+  group_by(Gender) %>% 
+  summarize(average_tip = mean(Tip),count = n())
+
+tip_mod%>%
+  group_by(pref) %>% 
+  summarize(average_tip = mean(Tip),count = n())
 ```
 
 ```{r}
@@ -44,3 +58,21 @@ gf_histogram(~Tip, fill = ~Gender, data = tip_mod) %>%
     title = "Tips: Male vs Female"
   )
 ```
+
+```{r}
+gf_density_ridges(pref ~ Tip, data = tip_mod, alpha = 0.5, fill = ~ pref) +
+  labs(title = "Density of Tips for Veg and Non-veg Preferences",
+       x = "Tip Amount",
+       y = "Food Preference") +
+  scale_fill_manual(values = c("Veg" = "green", "Non-veg" = "red")) 
+
+
+```
+
+# Inference
+
+-   Female students tend to tip slightly more, with an average tip of 12.17, compared to male students, who average around 10.17. This might hint at a marginally more generous tipping tendency among female students.
+
+-   Vegetarian students show a higher average tip (12.33) than those who prefer non-veg options (10.00), suggesting a subtle association between vegetarian preference and a higher likelihood of tipping.
+
+-   A large proportion of students in all groups did not tip, which might reflect a general attitude among college students that tipping is less essential or simply optional, potentially shaped by budget constraints common in student life.

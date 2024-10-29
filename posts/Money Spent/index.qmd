@@ -10,6 +10,7 @@ library(skimr)
 library(dplyr)
 library(ggformula)
 library(crosstable)
+library(knitr)
 ```
 
 ```{r}
