@@ -1,0 +1,99 @@
+---
+title: "Money Spent"
+author: "Hardik Monga"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(dplyr)
+library(ggformula)
+library(crosstable)
+```
+
+```{r}
+money<- read_delim(file = "../../data/money.csv")
+money
+
+inspect(money)
+skim(money)
+glimpse(money)
+```
+
+```{r}
+data_money <- as_tibble(money)
+
+# Summarize data by gender
+gender_spending <- data_money %>%
+    group_by(Gender) %>%
+    summarize(Total_Spent = sum(Money_spent, na.rm = TRUE))
+
+# Bar plot
+barplot(
+    height = gender_spending$Total_Spent,
+    names.arg = gender_spending$Gender,
+    col = c("pink", "skyblue"),
+    main = "Distribution of Spending by Gender",
+    xlab = "Gender",
+    ylab = "Total Money Spent"
+)
+
+```
+
+```{r}
+hist(
+    data_money$Money_spent,
+    breaks = 150,
+    main = "Distribution of Money Spent",
+    xlab = "Money Spent",
+    ylab = "Frequency"
+)
+```
+
+```{r}
+# Box Plot
+boxplot(
+    Money_spent ~ Gender,
+    data = money,
+    main = "Money Spent by Gender",
+    xlab = "Gender",
+    ylab = "Money Spent",
+    col = c("pink", "skyblue")
+)
+
+```
+
+```{r}
+pie(
+    gender_spending$Total_Spent,
+    labels = gender_spending$Gender,
+    col = c("skyblue", "pink"),
+    main = "Proportion of Total Money Spent by Gender"
+)
+
+```
+
+```{r}
+
+plot(
+    density(data_money$Money_spent[data_money$Gender == "Male"], na.rm = TRUE),
+    col = "blue",
+    main = "Density of Money Spent by Gender",
+    xlab = "Money Spent",
+    ylab = "Density"
+)
+lines(density(data_money$Money_spent[data_money$Gender == "Female"], na.rm = TRUE), col = "pink")
+legend("topright", legend = c("Male", "Female"), col = c("blue", "pink"), lty = 1)
+
+```
+
+# Inference:
+
+-   **Gender-Based Spending Patterns**: There appears to be a difference in overall spending between genders, suggesting possible behavioral or situational factors influencing spending habits among male and female students.
+
+<!-- -->
+
+-   **High Spending Variability**: The range of money spent by students varies widely, indicating diverse financial behaviors or differing circumstances, with some students likely having significantly higher expenditures than others.
+
+-   **Concentration Around Lower Spending Values**: Most students seem to spend within a lower range, implying a general trend toward modest spending, with only a few students deviating toward higher expenditures.

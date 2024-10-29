@@ -1,0 +1,105 @@
+---
+title: "Courses and Grades"
+author: "Hardik Monga"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(dplyr)
+library(ggformula)
+library(crosstable)
+```
+
+```{r}
+course<- read_delim(file = "../../data/course.csv")
+course
+
+inspect(course)
+skim(course)
+glimpse(course)
+```
+
+```{r}
+hist(
+    course$Score,
+    breaks = 10,
+    col = "lightblue",
+    main = "Distribution of Scores",
+    xlab = "Score",
+    ylab = "Frequency"
+)
+
+```
+
+```{r}
+avg_score_year <- aggregate(Score ~ Year, data = course, FUN = mean)
+
+# Line Plot
+plot(
+    avg_score_year$Year, avg_score_year$Score,
+    type = "o",
+    main = "Average Score Trend Across Years",
+    xlab = "Year",
+    ylab = "Average Score",
+    pch = 16
+)
+```
+
+```{r}
+# Box Plot
+boxplot(
+    Score ~ Course,
+    data = course,
+    main = "Score Distribution Across Courses",
+    xlab = "Course",
+    ylab = "Score",
+    las = 2
+)
+
+```
+
+```{r}
+# Scatter Plot
+plot(
+    course$Year, course$Score,
+    col = ifelse(course$Gender == "F", "blue", "red"),
+    pch = ifelse(course$Gender == "F", 16, 17),
+    main = "Score vs Year with Gender Distinction",
+    xlab = "Year",
+    ylab = "Score"
+)
+legend("topright", legend = c("Female", "Male"), col = c("blue", "red"), pch = c(16, 17))
+
+```
+
+```{r}
+gf_histogram(~Score,
+  fill = ~Degree,
+  data = course, alpha = .5
+) %>%  gf_vline(xintercept = ~ mean(Score)) %>%
+  gf_labs(
+    title = "Degrees VS Scores",
+    x = "Score", y = "Count"
+  ) %>%
+  gf_text(35 ~ (mean(Score)),
+    label = "Mean",
+  ) %>%
+  gf_refine(guides(fill = guide_legend(title = "Degree")))
+
+```
+
+# Inference
+
+-   The scores tend to remain within a similar range across different academic years, indicating consistent performance without significant changes in academic achievement as students progress.
+
+<!-- -->
+
+-   There isn’t a strong upward or downward trend in scores from year to year, suggesting that the academic difficulty or grading criteria may be consistent across years.
+
+-   Both genders exhibit similar score distributions, with no notable performance differences between male and female students, suggesting equality in academic achievement.
+
+-   A few outliers appear in the lower score ranges, showing that while most students score in a middle-to-high range, a minority are achieving significantly lower scores.
+
+-   The majority of scores are concentrated in the mid-to-high range, indicating that most students perform relatively well, with fewer instances of extremely low or extremely high scores.

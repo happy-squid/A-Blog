@@ -1,0 +1,46 @@
+---
+title: "Veg Non Veg"
+author: "Hardik Monga"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(dplyr)
+library(ggformula)
+library(crosstable)
+```
+
+```{r}
+tip_data<- read_delim(file = "../../data/tip.csv")
+tip_data
+```
+
+```{r}
+
+tip_mod <- tip_data %>%
+  dplyr::mutate(
+    pref = as_factor(`Food preferance`))
+tip_mod
+```
+
+```{r}
+tip_mod%>%crosstable(Tip~pref) %>% as_flextable()
+```
+
+```{r}
+mosaic::t_test(Tip~pref, data = tip_mod) %>%  broom::tidy()
+```
+
+```{r}
+gf_histogram(~Tip, fill = ~pref, data = tip_mod) %>% 
+  gf_labs(
+    title = "Tips: Veg vs Non-Veg"
+  )
+
+gf_histogram(~Tip, fill = ~Gender, data = tip_mod) %>% 
+  gf_labs(
+    title = "Tips: Male vs Female"
+  )
+```

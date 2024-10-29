@@ -53,7 +53,7 @@ gifts_age %>%
   )
 ```
 
-# Plotting the Line graph 
+# Plotting the Line graph
 
 Here, I tried to customly changing the shapes of the points of the different Items but it didn't work for some unknown reason.
 
@@ -76,10 +76,10 @@ ggplot(gifts_age_long, aes(x = Age, y = Spending, color = Item, group = Item, sh
 
 # Thoughts and Inference:
 
--   **Research Experiment that might have been conducted to obtain that data:** I think the motive behind the collection of this data was to check the amount different age groups spend for different types of gifts on Valentine's Day. This data can turn out to be helpful for both big convenience stores, Flower shops, Jewellary shops and small retailers on Valentine's Day and also in general.
+-   **Research Experiment that might have been conducted to obtain that data:** I think the motive behind the collection of this data was to check the amount different age groups spend for different types of gifts on Valentine's Day. This data can turn out to be very helpful for big convenience stores, Flower shops, Jewellary shops and small retailers on Valentine's Day and also in general.
 
--   **Questions that the Graph seeks to answer:** The graphs seeks to compare the price of different items bought by different age groups on Valentine's Day.
+-   **Questions that the Graph seeks to answer:** The graph seeks to compare the price of different items bought by different age groups on Valentine's Day.
 
 -   **My Experience:** For a long time, I was not able to figure out plotting multiple lines on the same graph until I accidentally came across pivot_longer through extensive googling and chatgpting. I still was not able to use unique shapes for each linegraph.
 
--   **Inference:** Each line graph seems to be going normal except the 'Candy' and 'GreetingCards' lines which seem to be going almost symmetrical and then converging in the end. I get the decline in candy consumption for older people but why is there a sudden increase in spending on greeting cards from 35 onwards?
+-   **Inference:** Each line graph seems normal except the 'Candy' and 'GreetingCards' lines which seem to be going almost symmetrical and then converging in the end. I get the decline in candy consumption for older people but why is there a sudden increase in spending on greeting cards from 35 onwards?

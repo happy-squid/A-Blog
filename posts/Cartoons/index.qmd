@@ -1,0 +1,74 @@
+---
+title: "Cartoons"
+author: "Hardik Monga"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(dplyr)
+library(ggformula)
+library(crosstable)
+library(ggridges)
+```
+
+```{r}
+cartoon<- read_delim(file = "../../data/cartoon.csv")
+cartoon
+
+inspect(cartoon)
+skim(cartoon)
+glimpse(cartoon)
+```
+
+```{r}
+gf_dens(~ Rating | Cartoon, data = cartoon, alpha = 0.7, fill = ~Cartoon)%>%
+  gf_labs(title = "Approximate Density Plot for Cartoon Ratings",
+          x = "Rating",
+          y = "Density")
+
+```
+
+```{r}
+gf_histogram(~Rating,
+  fill = ~Cartoon,
+  data = cartoon, alpha = .7
+) %>%  gf_vline(xintercept = ~ mean(Rating)) %>%
+  gf_labs(
+    title = "Cartoons vs Rating",
+    x = "Rating", y = "Count"
+  ) %>%
+  gf_text(22 ~ (mean(Rating)),
+    label = "Mean",
+  ) %>%
+  gf_refine(guides(fill = guide_legend(title = "Cartoon")))
+
+```
+
+```{r}
+gf_boxplot(
+  data = cartoon,
+  Rating ~ Cartoon,
+  fill = ~Cartoon,
+  alpha = 0.5
+) %>% gf_vline(xintercept = ~ mean(Rating)) %>%
+  
+  gf_labs(
+    title = "Rating Distributions vs Cartoons",
+    x = "Cartoon", y = "Rating",
+  ) %>%
+  
+  gf_refine(
+    scale_x_discrete(guide = "prism_bracket"),
+    guides(fill = guide_legend(title = "Cartoon"))
+  )
+```
+
+# Inference:
+
+1.  **Doraemon**: Out of the three cartoons, Doraemon seems to have received the highest average rating from college students. It looks like a lot of people love the blue robot cat and his adventures! 🐱
+
+2.  **Chota Bheem**: Chota Bheem got decent ratings, though they don’t quite reach Doraemon’s level. Maybe Bheem’s village adventures appeal to some, but he’s not stealing the show here.
+
+3.  **Dragon Tales:** Dragon Tales didn’t do as well, scoring the lowest average rating. It might be that fewer college students vibe with its fantasy setting compared to the more relatable or familiar themes in Doraemon and Chota Bheem. 🐉

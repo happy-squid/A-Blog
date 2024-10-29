@@ -30,7 +30,7 @@ inspect(ikea)
 
 **Qualitative Variables:** item_id, name, category, link, short_description, designer
 
-**Observations:** There are alot of missing row for depth, height and width variables. The minimum price for an item is 30, the max price for an item is 95850, while the median price is 5950. This median of the prices shows items with price in 5 digits are an exception.
+**Observations:** There are alot of missing rows for depth, height and width variables. The minimum price for an item is 30, the max price for an item is 95850, while the median price is 5950. This median of the prices shows items with price in 5 digits are an exception.
 
 **Target Variable**: price, price_usd
 
